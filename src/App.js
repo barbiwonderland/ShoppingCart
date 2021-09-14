@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { addProduct } from "./redux/slices/cartSlice";
 function App() {
+  const basket = useSelector((state) => state.inventary);
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) => dispatch(addProduct(product));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <div className="row">
+          {basket.map((x) => (
+            <div className="col-md-4 text-center " key={x.id}>
+              <h2>{x.title}</h2>
+              <img src={x.imageUrl} alt={x.title} width="250" height="250" />
+              <h3>{x.desription}</h3>
+              <h3>${x.price}</h3>
+              <button
+                className="btn btn-success"
+                onClick={() => handleAddToCart(x)}
+              >
+                Agregar
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
