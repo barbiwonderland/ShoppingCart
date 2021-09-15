@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiDelete } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import {
   addProduct,
   clearCart,
   decreaseCart,
+  getTotals,
   removeFromCart,
 } from "../redux/slices/cartSlice";
 const Cart = () => {
@@ -26,6 +27,10 @@ const Cart = () => {
   const clear = () => {
     dispatch(clearCart());
   };
+
+useEffect(()=>{
+  dispatch(getTotals())
+},[cart,dispatch])  
   const cartResult =
     cart.cartItems.length === 0 ? (
       <div className="empty">
@@ -92,7 +97,7 @@ const Cart = () => {
               </button>
             </div>
             <div className="text-center">
-              <h4>Subtotal $100</h4>
+              <h4>Subtotal $ {cart.cartTotalAmount}</h4>
               <button className="btn border shadow-none">
                 Continuar Comprando
               </button>

@@ -1,16 +1,25 @@
 import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaBorderNone, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
   return (
     <>
       <nav class="navbar navbar-dark bg-dark justify-content-between mb-5">
-        <Link to="/" class="navbar-brand ms-2">ShoppingCart</Link>
+        <Link to="/" class="navbar-brand ms-2">
+          ShoppingCart
+        </Link>
         <a className=" text-light me-3">
           <h3>
-            <Link className="text-white" to="/cart">
+            <Link
+              className="text-white"
+              style={{ textDecoration: "none" }}
+              to="/cart"
+            >
               {" "}
-              <FaShoppingCart />
+              <FaShoppingCart/>
+              <span style={{fontSize:"15px",textDecoration:"none",display:"inline-flex"}} >{cartTotalQuantity}</span>
             </Link>
           </h3>
         </a>{" "}
