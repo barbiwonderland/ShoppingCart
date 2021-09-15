@@ -10,11 +10,10 @@ const Header = () => {
         <Link to="/" class="navbar-brand ms-2">
           ShoppingCart
         </Link>
-        <a className=" text-light me-3">
-          <h3>
+        <a className=" text-light me-3" style={{textDecoration:"none"}}>
+          <h3 >
             <Link
-              className="text-white"
-              style={{ textDecoration: "none" }}
+              className="text-white " style={{textDecoration:"none"}}
               to="/cart"
             >
               {" "}

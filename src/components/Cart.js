@@ -59,7 +59,7 @@ const Cart = () => {
             {cart.cartItems.map((x) => (
               <tr key={x.id} >
                 <td >
-                  <div className="d-flex">
+                  <div className="d-flex flex-wrap">
                   <img src={x.imageUrl} width="50" alt={x.title} />
                   {x.title}
                   <button
@@ -73,7 +73,7 @@ const Cart = () => {
                 </td>
                 <td>{x.price}</td>
                 <td>
-                  <div className=" w-50 border d-flex align-items-center justify-content-between">
+                  <div className="  border d-inline-flex align-items-center justify-content-center flex-nowrap mx-auto">
                     <button
                       className="btn  shadow-none"
                       onClick={() => handleDecrease(x)}
@@ -107,9 +107,9 @@ const Cart = () => {
           </div>
           <div className="text-center">
             <h4>Subtotal $ {cart.cartTotalAmount}</h4>
-            <button className="btn border shadow-none">
+            <Link to="/" className="btn border shadow-none">
               Continuar Comprando
-            </button>
+            </Link>
           </div>
         </div>
       </>
@@ -118,7 +118,7 @@ const Cart = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">{cartResult}</div>
+          <div className="col-md-12 mb-3">{cartResult}</div>
         </div>
       </div>
     </>

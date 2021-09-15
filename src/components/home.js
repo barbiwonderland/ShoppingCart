@@ -11,10 +11,10 @@ const Home = () => {
   return (
     <>
  
-      <div className="container">
+      <div className="container mb-4">
         <div className="row">
           {basket.map((x) => (
-            <div className="col-md-4 text-center " key={x.id}>
+            <div className="col-md-4 text-center mb-5 " key={x.id}>
               <h2>{x.title}</h2>
               <img src={x.imageUrl} alt={x.title} width="250" height="250" />
               <h3>{x.desription}</h3>
