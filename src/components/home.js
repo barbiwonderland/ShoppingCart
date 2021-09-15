@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/slices/cartSlice";
 import Footer from "./footer";
 import Header from "./header";
+import { ToastContainer } from "react-toastify";
 
 const Home = () => {
   const basket = useSelector((state) => state.inventary);
@@ -10,7 +11,7 @@ const Home = () => {
   const handleAddToCart = (product) => dispatch(addProduct(product));
   return (
     <>
- 
+     <ToastContainer autoClose={2000} />
       <div className="container mb-4">
         <div className="row">
           {basket.map((x) => (

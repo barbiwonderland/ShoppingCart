@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
@@ -23,8 +23,15 @@ const cartSlice = createSlice({
         state.cartItems.push(tempProduct);
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-     
-  
+      toast("🦄Producto agregado con éxito", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     },
     removeFromCart(state, action) {
       const newCart = state.cartItems.filter(
@@ -70,6 +77,11 @@ const cartSlice = createSlice({
     },
   },
 });
-export const { addProduct, removeFromCart, decreaseCart, clearCart,getTotals } =
-  cartSlice.actions;
+export const {
+  addProduct,
+  removeFromCart,
+  decreaseCart,
+  clearCart,
+  getTotals,
+} = cartSlice.actions;
 export default cartSlice.reducer;
