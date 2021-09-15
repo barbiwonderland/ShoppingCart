@@ -44,7 +44,7 @@ const Cart = () => {
       </div>
     ) : (
       <>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Producto</th>
@@ -55,10 +55,11 @@ const Cart = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {cart.cartItems.map((x) => (
-              <tr key={x.id}>
-                <td>
+              <tr key={x.id} >
+                <td >
+                  <div className="d-flex">
                   <img src={x.imageUrl} width="50" alt={x.title} />
                   {x.title}
                   <button
@@ -67,10 +68,12 @@ const Cart = () => {
                   >
                     <FiDelete style={{ fontSize: "20px" }}></FiDelete>
                   </button>
+
+                  </div>
                 </td>
                 <td>{x.price}</td>
                 <td>
-                  <div className="border d-inline-block">
+                  <div className=" w-50 border d-flex align-items-center justify-content-between">
                     <button
                       className="btn  shadow-none"
                       onClick={() => handleDecrease(x)}
