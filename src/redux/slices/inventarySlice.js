@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const INITIAL_STATE=[
   {
     "id": "123",
-    "title": "Blue t-shirt",
+    "title": "Orange t-shirt",
     "description":
       "No fancy sizing charts here, one t-shirt size to rule them all",
     "imageUrl":
@@ -11,7 +11,7 @@ const INITIAL_STATE=[
   },
   {
     "id": "456",
-    "title": "Yellow t-shirt",
+    "title": "Sky-blue t-shirt",
     "description":
       "This unique t-shirt is guaranteed to fit nobody, not even new born babies",
     "imageUrl":
@@ -20,7 +20,7 @@ const INITIAL_STATE=[
   },
   {
     "id": "789",
-    "title": "Red t-shirt",
+    "title": "Pink t-shirt",
     "description":
       "The only product on our site that might actually be worth buying",
     "imageUrl":

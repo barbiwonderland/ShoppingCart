@@ -2,12 +2,15 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { addProduct } from "./redux/slices/cartSlice";
+import Header from "./components/header";
+import Footer from "./components/footer";
 function App() {
   const basket = useSelector((state) => state.inventary);
   const dispatch = useDispatch();
   const handleAddToCart = (product) => dispatch(addProduct(product));
   return (
     <>
+      <Header />
       <div className="container">
         <div className="row">
           {basket.map((x) => (
@@ -26,6 +29,7 @@ function App() {
           ))}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
