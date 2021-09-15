@@ -3,7 +3,7 @@ import { FiDelete } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeFromCart } from "../redux/slices/cartSlice";
+import { addProduct, decreaseCart, removeFromCart } from "../redux/slices/cartSlice";
 const Cart = () => {
   //Redux
   const dispatch = useDispatch();
@@ -12,6 +12,10 @@ const Cart = () => {
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
+  const handleDecrease=(cartItem)=>{
+      dispatch(decreaseCart(cartItem))
+  }
+  const handleIncrease=(cartItem)=>{dispatch(addProduct(cartItem))}
 
   const cartResult =
     cart.cartItems.length === 0 ? (
@@ -46,9 +50,9 @@ const Cart = () => {
               <td>{x.price}</td>
               <td>
                 <div className="border d-inline-block">
-                  <button className="btn  shadow-none">-</button>
+                  <button className="btn  shadow-none" onClick={()=>handleDecrease(x)}>-</button>
                   {x.cartQuantity}{" "}
-                  <button className="btn shadow-none">+</button>
+                  <button className="btn shadow-none" onClick={()=>handleIncrease(x)}>+</button>
                 </div>
               </td>
               <td>
