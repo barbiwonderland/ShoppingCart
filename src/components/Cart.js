@@ -3,7 +3,12 @@ import { FiDelete } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProduct, decreaseCart, removeFromCart } from "../redux/slices/cartSlice";
+import {
+  addProduct,
+  clearCart,
+  decreaseCart,
+  removeFromCart,
+} from "../redux/slices/cartSlice";
 const Cart = () => {
   //Redux
   const dispatch = useDispatch();
@@ -12,11 +17,15 @@ const Cart = () => {
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
-  const handleDecrease=(cartItem)=>{
-      dispatch(decreaseCart(cartItem))
-  }
-  const handleIncrease=(cartItem)=>{dispatch(addProduct(cartItem))}
-
+  const handleDecrease = (cartItem) => {
+    dispatch(decreaseCart(cartItem));
+  };
+  const handleIncrease = (cartItem) => {
+    dispatch(addProduct(cartItem));
+  };
+  const clear = () => {
+    dispatch(clearCart());
+  };
   const cartResult =
     cart.cartItems.length === 0 ? (
       <div className="empty">
@@ -50,9 +59,19 @@ const Cart = () => {
               <td>{x.price}</td>
               <td>
                 <div className="border d-inline-block">
-                  <button className="btn  shadow-none" onClick={()=>handleDecrease(x)}>-</button>
+                  <button
+                    className="btn  shadow-none"
+                    onClick={() => handleDecrease(x)}
+                  >
+                    -
+                  </button>
                   {x.cartQuantity}{" "}
-                  <button className="btn shadow-none" onClick={()=>handleIncrease(x)}>+</button>
+                  <button
+                    className="btn shadow-none"
+                    onClick={() => handleIncrease(x)}
+                  >
+                    +
+                  </button>
                 </div>
               </td>
               <td>
@@ -60,21 +79,25 @@ const Cart = () => {
                 <div className="d-flex justify-content-end align-items-center">
                   ${x.price * x.cartQuantity}
                 </div>
-                
               </td>
             </tr>
           ))}
-              <div className="d-flex justify-content-between mb-5">
-          <div>
-            <button className="btn border shadow-none ">Limpiar Carrito</button>
+          <div className="d-flex justify-content-between mb-5">
+            <div>
+              <button
+                className="btn border shadow-none "
+                onClick={() => clear()}
+              >
+                Limpiar Carrito
+              </button>
+            </div>
+            <div className="text-center">
+              <h4>Subtotal $100</h4>
+              <button className="btn border shadow-none">
+                Continuar Comprando
+              </button>
+            </div>
           </div>
-          <div className="text-center">
-            <h4>Subtotal $100</h4>
-            <button className="btn border shadow-none">
-              Continuar Comprando
-            </button>
-          </div>
-        </div>
         </tbody>
       </table>
     );
@@ -84,8 +107,6 @@ const Cart = () => {
         <div className="row">
           <div className="col-md-12">{cartResult}</div>
         </div>
-
-    
       </div>
     </>
   );
