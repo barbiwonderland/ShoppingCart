@@ -20,7 +20,7 @@ const Home = () => {
               <h3>{x.desription}</h3>
               <h3>${x.price}</h3>
               <button
-                className="btn btn-success"
+                className="btn btn-outline-dark"
                 onClick={() => handleAddToCart(x)}
               >
                 Agregar
