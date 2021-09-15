@@ -10,7 +10,7 @@ const Home = () => {
   const handleAddToCart = (product) => dispatch(addProduct(product));
   return (
     <>
-      <Header/>
+ 
       <div className="container">
         <div className="row">
           {basket.map((x) => (
@@ -29,7 +29,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <Footer />
+     
     </>
   );
 };
