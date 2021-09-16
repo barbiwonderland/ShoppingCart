@@ -18,20 +18,23 @@ const cartSlice = createSlice({
       );
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
+    
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
+      
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-      toast("🦄Producto agregado con éxito", {
+      toast.configure();
+      toast('🦄 Producto agregado con éxito', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      });
+        });
     },
     removeFromCart(state, action) {
       const newCart = state.cartItems.filter(

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../redux/slices/cartSlice";
-import Footer from "./footer";
-import Header from "./header";
-import { ToastContainer } from "react-toastify";
+import { addProduct, getTotals } from "../redux/slices/cartSlice";
+import { store } from "../redux/store";
 
 const Home = () => {
   const basket = useSelector((state) => state.inventary);
+  const cart = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
   const handleAddToCart = (product) => dispatch(addProduct(product));
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart,dispatch]);
   return (
     <>
-     <ToastContainer autoClose={2000} />
       <div className="container mb-4">
         <div className="row">
           {basket.map((x) => (
@@ -30,7 +32,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-     
     </>
   );
 };
